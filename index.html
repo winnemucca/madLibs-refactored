@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="utf-8">
+  <title>ML2</title>
+  <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.min.css">
+  <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+<body ng-controller="NamingController">
+
+<header class='head'>
+  <div class='title left'>
+	 <img src='http://colouringbook.org/links/colouringbook.org/TwentyEight/face_smile_black_white_line_art-555px.png'>
+  </div>
+  <div class='title right'>
+    <h1> <img src="http://www.michael-whelan.net/thinkful-angular-ngMadLibs/assets/images/ng-mad-libs-logo.png"> </h1>
+    <h1> AutoMate This!</h1>
+
+  </div>
+</header>
+<!-- using ng-model for inputs and ng-init to fill the input boxes -->
+
+
+<div class='container' >
+
+<!-- <div class='container' > -->
+  <!-- <form class='userInput' name="myForm" novalidate ng-submit=submitForm("myForm.$valid")> -->
+  <form class="userInput" name="myForm" novalidate ng-hide="myForm.$submitted && myForm.$valid">
+
+  <!-- <form class="userInput" name="myForm" novalidate ng-submit="submit()"> -->
+  <!-- ********************* can use novalidate on the form above to disable html5 validation but not angular validate -->
+
+
+  <p> Provide the following words</p>
+    <div class='response' >
+
+	    <input type="text" name="female" ng-model='customName.female' placeholder='female name'  required ng-minlength="2">
+	    <input type='text' name="job" ng-model="customName.job"  placeholder='job title' required >
+	      
+	    <input type='text' name="tedious" ng-model="customName.tedious"  placeholder='tedious task' ng-required="true"; ng-minlength="2">
+	    
+    
+    </div>
+
+    <div class='response'> 
+	    <input type='text' name="dirty" ng-model="customName.dirty" placeholder="dirty task" required>
+	    <input type='text'name="celebrity" ng-model="customName.celebrity"  placeholder="celebrity" required>
+	    <input type='text' name="useless" ng-model="customName.useless" placeholder="useless skill" required>
+    
+    </div>
+
+    <div class='response'> 
+
+	    <input type='text' name="obnoxious" ng-model="customName.obnoxious" placeholder="obnoxious celebrity"  required>
+	    <input type='text' name="huge" ng-model="customName.huge" placeholder="something huge" required>
+	    <input type='text' name="adjective" ng-model="customName.adjective" placeholder="adjective" required>
+    </div>
+
+
+
+    <p class="error" ng-if="myForm.$submitted && myForm.$error.required"> Please complete each column</p>
+
+    <input type="submit" class="submission" value="Generate My Mad Libs">
+
+    <!-- <p class="error" ng-if="myForm.$submitted && myForm.$error.required"> Please complete each column</p> -->
+
+  	
+  </form>
+
+  <!-- placed span along the markup so that I could change the background color. -->
+
+  <section class='userOutput' ng-if="myForm.$submitted && myForm.$valid">
+  	<p>  <span>{{customName.female}}</span> was a <span>{{customName.job}}</span> who loved technology. Although she loved parts of her job, she absolutely hated  <span>{{customName.tedious}} </span> and <span>{{customName.dirty}}</span>. So, {{customName.female}} met with her life mentor <span>{{customName.celebrity}}</span> who told her to learn how to <span>{{namectrl.response.useless}}</span> with Thinkful. Thinkful didn't offer a course on <span>{{customName.useless}}</span> so she studied programming instead. <span> {{customName.female}} </span>
+   </p>
+
+  	<p>What a great decision! With her new skills, <span>{{customName.female}} </span>built a(n) <span> {{customName.adjective}} </span> robot named <span>{{customName.obnoxious}}</span> that not only loved {{customName.dirty}} but did it <span>{{customName.huge}}</span> faster. </p>
+
+  	  <!-- <input type="submit" class="submission" value="start over" ng-submit="myForm.reset() "> -->
+  	  <button class ="submission" ng-click="reset() ">Reset Mad Labs</button>
+
+  </section>
+
+
+</div>
+
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.0/angular.min.js"></script>
+  <script src="main.js"></script>
+
+</body>
+</html>
