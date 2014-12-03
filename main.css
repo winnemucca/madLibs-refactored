@@ -45,6 +45,8 @@ height: 40%;
 border-bottom: 2px solid;
 line-height: 1.5em;
 padding: 10px 20px;
+-webkit-transition: all ease-out 0.9s;
+transition: all ease-out 0.9s;
 }
 
 .response {
@@ -53,15 +55,36 @@ padding: 10px 20px;
 	text-align: center;
 	color: blue;
 	width: 99%;
+	/*-webkit-transition: all linear 0.5s;
+	transition: spin linear 0.5s;*/
 }
+
+
+
 .response input {
 	margin: 0 40px;
+
+}
+
+/*.ngdirty is an animation technique that only works with ng-model and form*/
+.response input.ng-dirty {
+	background: blue;
+	color: white;
 }
 
 .userInput p {
 	padding: 0 40px;
 	font-size: 35px;
 }
+
+.userInput.ng-hide {
+opacity: 0;
+}
+
+.userInput.ng-hide{
+	opacity: 1;
+}
+
 
 span {
 	color: blue;
@@ -81,5 +104,34 @@ span {
 .error {
 		font-size: 8px;
 		color: red;
+		position: relative;
 	}
+
+/*
+.error.ngenter {
+	-webkit-animation-delay:0.9s;
+	animation-delay: 0.2s;
+	-webkit-animation-duration: 0;
+}*/
+
+.error.ng-enter {
+	/*need a starting point for the animation to begin*/
+	opacity: 0;
+	-webkit-animation:enter_animation 2.5s;
+	animation: enter_animation 0.3s;
+}
+
+@-webkit-keyframes enter_animation {
+  from { opacity:0; }
+  to { opacity:1.0; }
+}
+
+@keyframes enter_animation {
+  from { opacity:0; }
+  to { opacity:1.0; }
+}
+
+
+
+
 
